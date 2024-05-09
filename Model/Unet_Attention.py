@@ -16,8 +16,8 @@ from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 import argparse
 import sys
-sys.path.append(r"Z:\Desktop\python项目\03_BEiTwithAttention")
-sys.path.append(r"Z:\Desktop\python项目\03_BEiTwithAttention\DataProcess")
+sys.path.append(r"./DataProcess")
+
 
 
 from Attention.CCAttention import RCC_Attention
