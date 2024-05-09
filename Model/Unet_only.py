@@ -13,8 +13,8 @@ from torchsummary import summary
 import cv2
 import matplotlib.pyplot as plt
 import sys
-sys.path.append(r"Z:\Desktop\python项目\03_BEiTwithAttention")
-sys.path.append(r"Z:\Desktop\python项目\03_BEiTwithAttention\DataProcess")
+sys.path.append(r".\03_BEiTwithAttention")
+
 
 from DataProcess.DataSet import MyDataSet
 
