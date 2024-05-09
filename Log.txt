@@ -1,0 +1,95 @@
+version:1.0(Unet+CAttention)
+Add:
+	1.Image Data Patch.
+Result:
+	1.Positive and negative smple imblance;(Try: save the patch which has positive massage and down other.)
+	2.Ioss function has a bug in Focal_loss;
+	3.Can't not make the image patch splicing to observe the result.
+Bug:
+	1.Can't not Show Prediction result and Label Image.
+time: 2024-03-08
+
+version:1.1(Unet+CAttention)
+Add:
+	1.using image feature weight try to blance positive and negative sample;
+	2.Image patch splicing code;
+
+
+____________________________________________
+ReStart Now!
+This is Right after i'm Checked out my Loss function
+Version:2.0
+time:2024.03.20
+Model:Unet+CCAttention
+Let's do it.
+
+version:2.0.1(Unet+CAttention)
+Add:
+	1.Dice_Loss and Focal_loss bug fixed.
+	2.Image cut way and concat function add.
+Bug:
+	1.CCAttention is ineffective or worse than Unet-only. 
+		fixed: try using another attention method.
+Result:
+	Unet-only:Accuracy up to 99.94%.
+		Trian-loss:0.1075 Val_loss:0.3057 and model is is no convergence.
+	Unet+CCAttention:Accuracy up to 99.92%. But it's taken 10h28m to train.
+		Trian-loss:0.1559 Val_loss:0.2696 and model is is no convergence,too.
+		
+	When I evaluate Unet-only and CCAttention+Unet model,it's weird that the latter miou is only around 0.2 lower than Unet-only convergence model.
+	But MSR is around 0.3 lower than Unet-only. Be attention that CCAttention+Unet model is no convergence,but i think it's no worth to going on for
+	practical application. 
+	
+	In validational,we get those evaluation metrics
+	Unet-only: mIou is 0.7255, FDR is 0.0004 ,MSR is 0.1911
+	CCAttention+Unet: mIou is 0.6932, FDR is 0.0004 ,MSR is 0.1616
+
+Next version add strategy:
+	1.Add miou,FDP,MSR and another evaluate fuciton to evaluate model.
+	2.try using smaller patch size.
+	3.Using another attention method next Version.
+
+time:2024.03.25
+____________________________________________
+
+version:2.1.1(Unet+CBAM)
+Add:
+	1.replace CCAttention as CBAM which is smaller attention block.
+	2.Add miou,FDP,MSR and another evaluate fuciton to evaluate model.
+
+Result:
+	1.Model with smaller patch sizes do not 
+		train as well as models with larger patch sizes.
+	2.CBAM+Unet model is taken very few train time compare with CCAttention+Unet,and effect is not very difference.
+	3.Unet-only effection is best until now.
+	
+	In validational,we get those evaluation metrics
+	CBAM+Unet: mIou:0.5866,Ground Pixel ACC:0.9969,Defects Piexel Acc:0.9697
+	Unet-only:mIou:0.5995,Ground Pixel ACC:0.9939,Defects Piexel Acc:0.9182
+Next version add strategy:
+	1.Add New Model Yolov5s.
+	2.design Yolov5s's head for segment.
+
+time:2024.03.29
+
+____________________________________________
+Version:3.1.2(Yolov5s)
+Add:
+	1.New model Yolov5s added,when we try to update segment net  structure ,just chage it's head block.
+	2.update Writter funtion make data draw more flexible.
+	3.Using hook to get training feature map to show model effection.
+
+Result:
+	1.Yolov5s head may have some error.it's training process is unnormal.Need more experiment.
+	2.This make me confusion ,and i decide to explore attention block location in Unet before i find Yolov5 head for segment.
+
+time:2024.04.02
+____________________________________________
+____________________________________________
+____________________________________________
+____________________________________________
+____________________________________________
+Now,i'm confusional.Maybe there are two ways to save my code:
+	1.change my loss fuciton.
+	2.change that image patch num and rules.
+	3.thinking whether add another data process.
